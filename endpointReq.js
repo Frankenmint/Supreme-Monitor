@@ -25,6 +25,8 @@ console.time();
         const entries2 = await beautify(entries);
         console.log(entries2);
         }
+        
+        //now we have to use javascript methods to trim the json to display only the objects we need. you could write it to a file with fs if you want.
     } catch (e) {
         console.log('Something is wrong', e);
     }
