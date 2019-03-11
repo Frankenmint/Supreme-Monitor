@@ -15,6 +15,7 @@ Loop stock check function to return results
 Dependencies:
 
 currently Axios and js-beautify are the only dependencies.
+
 Axios:
 $ npm install axios
 
