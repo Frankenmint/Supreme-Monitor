@@ -4,9 +4,6 @@ var beautify = require('js-beautify');
 console.time();
 (async function main() {
     try {
-        //getting the mobile_stock endpoint
-        const response = await axios.get('http://www.supremenewyork.com/mobile_stock.json');
-
         //this will query an items stock(replace id with specified ID): 
         //test ID as of week 2: 172169
         var ID = '';
