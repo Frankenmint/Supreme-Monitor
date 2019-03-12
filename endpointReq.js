@@ -1,9 +1,13 @@
 const axios = require('axios');
+var jsonQuery = require('json-query');
 var beautify = require('js-beautify');
 
 console.time();
 (async function main() {
     try {
+        //getting the mobile_stock endpoint
+        const response = await axios.get('http://www.supremenewyork.com/mobile_stock.json');
+
         //this will query an items stock(replace id with specified ID): 
         //test ID as of week 2: 172169
         var ID = '';
@@ -14,16 +18,17 @@ console.time();
         //make it readable. optional step.
         const entryID2 = await beautify(entryID);
         console.log(entryID2);
+
         } else {
         const response = await axios.get('http://www.supremenewyork.com/mobile_stock.json');
-        const entries = await JSON.stringify(response.data);
+        const entries = response.data;
 
-        //make it readable. optional step.
-        const entries2 = await beautify(entries);
-        console.log(entries2);
+        var query = await jsonQuery("products_and_categories.Sweatshirts[**][*id='172167'].name", {data: entries}).value;
+        //now it returns all matching values to an array
+            
+        console.log(query);
         }
-        
-        //now we have to use javascript methods to trim the json to display only the objects we need. you could write it to a file with fs if you want.
+
     } catch (e) {
         console.log('Something is wrong', e);
     }
